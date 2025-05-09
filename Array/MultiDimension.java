@@ -3,7 +3,7 @@ package Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class MultiDimension {
+public class  MultiDimension {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
           int[][] array = new int[3][3];

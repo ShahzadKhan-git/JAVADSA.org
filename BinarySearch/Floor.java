@@ -1,16 +1,19 @@
 package BinarySearch;
 
-public class orderAgnosticBinarysearch {
+public class Floor {
     public static void main(String[] args) {
-        int [] arr = {1,3,5,7,9,13, 67, 89};
-        int target =9;
-        int ans= ceiling(arr,target);
+        int [] arr = {2,3,5,9,14,16,18};
+        int target = 15;
+        int ans= floor(arr,target);
         System.out.println(ans);
     }
 
-    static int ceiling(int[] arr, int target){
+    static int floor(int[] arr, int target){
+
+
         int start=0;
         int end= arr.length;
+
 
 
         while(start<=end){
@@ -21,10 +24,10 @@ public class orderAgnosticBinarysearch {
                 start = mid+1;
             }
             else{
-                return start;
+                return mid;
             }
 
         }
-        return -1;
+        return end;
     }
 }
