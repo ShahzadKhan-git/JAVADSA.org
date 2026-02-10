@@ -11,7 +11,24 @@ public class implementation {
         }
     }
     public static void display(Node root){
+        if(root == null) return;
 
+        System.out.print(root.val + " -> ");
+
+        if(root.left != null) {
+            System.out.print(root.left.val + " ");
+        } else {
+            System.out.print("null ");
+        }
+
+        if(root.right != null) {
+            System.out.println(root.right.val);
+        } else {
+            System.out.println("null");
+        }
+
+        display(root.left);
+        display(root.right);
     }
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -25,6 +42,8 @@ public class implementation {
         a.right = d;
         Node e = new Node(6);
         b.right = e;
+
+        display(root);
 
 
     }
