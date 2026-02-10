@@ -8,7 +8,7 @@ public class displayStackRecursively {
 
         int top = s.pop();
         System.out.print(top + " ");
-        displayRecRev(s);
+        displayRecRev(s);  //Here it is displayed reve rsely
         s.push(top);
     }
 

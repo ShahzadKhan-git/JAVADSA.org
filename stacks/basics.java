@@ -11,7 +11,7 @@ public class basics {
         st.push(7);
         st.push(9);
 
-        //To remove top of the element
+        //To view top of the element
         System.out.println(st.peek());
 
         //To print all the elements in the stack

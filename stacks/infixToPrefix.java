@@ -1,5 +1,4 @@
 package stacks;
-
 import java.util.Stack;
 
 public class infixToPrefix {
@@ -8,17 +7,23 @@ public class infixToPrefix {
         String str = "9-(5+3)*4/6";
         Stack<String> val = new Stack<>();
         Stack<Character> op = new Stack<>();
-        for(int i=0; i<str.length(); i++) {
+
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
             int ascii = (int) ch;
 
+
             if (ascii >= 48 && ascii <= 57) {
-                String s = " " + ch;
+                String s = ch + "";
                 val.push(s);
-            } else if (op.size() == 0 || ch=='(' || op.peek()=='(') {
+            }
+
+            else if (op.size() == 0 || ch == '(' || op.peek() == '(') {
                 op.push(ch);
-            } else if(ch==')'){
-                while(op.peek()!='('){
+            }
+
+            else if (ch == ')') {
+                while (op.peek() != '(') {
                     String val2 = val.pop();
                     String val1 = val.pop();
                     char x = op.pop();
@@ -27,40 +32,41 @@ public class infixToPrefix {
                 }
                 op.pop();
             }
+
             else {
                 if (ch == '+' || ch == '-') {
-                    String val2 = val.pop();
-                    String val1 = val.pop();
-                    char x = op.pop();
-                    String y = x + val1 + val2;
-                    val.push(y);
 
-                    op.push(ch);
-                } else if (ch == '*' || ch == '/') {
-                    if (op.peek() == '*' || op.peek() == '/') {
+                    while (!op.isEmpty() && op.peek() != '(') {
                         String val2 = val.pop();
                         String val1 = val.pop();
                         char x = op.pop();
                         String y = x + val1 + val2;
                         val.push(y);
-
-                    } else {
-                        op.push(ch);
                     }
+                    op.push(ch);
+                } else if (ch == '*' || ch == '/') {
+
+                    while (!op.isEmpty() && (op.peek() == '*' || op.peek() == '/')) {
+                        String val2 = val.pop();
+                        String val1 = val.pop();
+                        char x = op.pop();
+                        String y = x + val1 + val2;
+                        val.push(y);
+                    }
+                    op.push(ch);
                 }
             }
-
         }
 
-        while(val.size()>1){
+
+        while (val.size() > 1) {
             String val2 = val.pop();
             String val1 = val.pop();
             char x = op.pop();
             String y = x + val1 + val2;
             val.push(y);
-
         }
-        System.out.println(val.pop());
 
+        System.out.println(val.pop());
     }
 }
