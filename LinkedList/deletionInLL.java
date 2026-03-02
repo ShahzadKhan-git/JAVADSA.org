@@ -30,7 +30,7 @@ public class deletionInLL {
     }
 
     private static Node removesHead(Node head){
-        if(head == null) return null;
+        if(head == null) return head;
         head = head.next;
         return head;
     }
@@ -45,10 +45,32 @@ public class deletionInLL {
         return head;
     }
 
+    private static Node removeK(Node head, int k){
+        if(head == null) return head;
+        if(k==1){
+            head = head.next;
+            return head;
+        }
+        int count =0;
+        Node temp = head;
+        Node prev = null;
+
+        while(temp!=null){
+            count++;
+            if(count == k){
+                prev.next = prev.next.next;
+                break;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+        return head;
+    }
+
     public static void main(String[] args){
         int[] arr = {2,3,5,7};
         Node head = convert2LL(arr);
-        head = removesTail(head);
+        head = removeK(head, 3);
         print(head);
 
     }
