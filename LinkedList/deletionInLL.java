@@ -67,10 +67,32 @@ public class deletionInLL {
         return head;
     }
 
+    private static Node removeElement(Node head, int element){
+        if(head == null) return head;
+        if(head.data==element){
+            head = head.next;
+            return head;
+        }
+
+        Node temp = head;
+        Node prev = null;
+
+        while(temp!=null){
+
+            if(temp.data == element){
+                prev.next = prev.next.next;
+                break;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+        return head;
+    }
+
     public static void main(String[] args){
         int[] arr = {2,3,5,7};
         Node head = convert2LL(arr);
-        head = removeK(head, 3);
+        head = removeElement(head, 3);
         print(head);
 
     }
