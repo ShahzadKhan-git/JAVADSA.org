@@ -30,15 +30,25 @@ public class deletionInLL {
     }
 
     private static Node removesHead(Node head){
-        if(head == null) return head;
+        if(head == null) return null;
         head = head.next;
+        return head;
+    }
+
+    private static Node removesTail(Node head){
+        if(head == null || head.next ==null) return null;
+        Node temp = head;
+        while(temp.next.next != null){
+            temp = temp.next;
+        }
+        temp.next = null;
         return head;
     }
 
     public static void main(String[] args){
         int[] arr = {2,3,5,7};
         Node head = convert2LL(arr);
-        head = removesHead(head);
+        head = removesTail(head);
         print(head);
 
     }
